@@ -1,0 +1,93 @@
+--- Inspecting files in dataset ---
+
+File: combined_delay.csv
+Columns: ['date', 'station_no', 'station_name', 'delay', 'train_no']
+Total rows: 38428703
+Sample rows:
+         date  station_no station_name  delay  train_no
+0  2025-02-08           1           MJ    NaN       961
+1  2025-02-10           1           MJ    NaN       961
+2  2025-02-12           1           MJ    0.0       961
+3  2025-02-13           1           MJ    0.0       961
+4  2025-02-22           1           MJ    0.0       961
+5  2025-02-23           1           MJ    0.0       961
+6  2025-02-24           1           MJ    0.0       961
+7  2025-03-08           1           MJ    0.0       961
+8  2025-03-09           1           MJ    0.0       961
+9  2025-03-10           1           MJ    0.0       961
+
+Null delay count in first 200k: 17277
+Non-null delay stats (in first 200k):
+count    182723.000000
+mean        123.308708
+std         200.718967
+min         -88.000000
+25%          11.000000
+50%          41.000000
+75%         152.000000
+max        4511.000000
+Name: delay, dtype: float64
+Some non-zero delay sample values:
+          date  station_no station_name  delay  train_no
+25  2025-04-12           1           MJ    1.0       961
+30  2025-04-19           1           MJ    3.0       961
+77  2025-06-23           1           MJ    6.0       961
+79  2025-06-26           1           MJ   72.0       961
+80  2025-06-28           1           MJ    5.0       961
+83  2025-07-02           1           MJ   11.0       961
+85  2025-07-05           1           MJ    1.0       961
+87  2025-07-07           1           MJ    4.0       961
+91  2025-07-13           1           MJ   11.0       961
+92  2025-07-14           1           MJ    4.0       961
+
+File: combined_schedule.csv
+Columns: ['station_no', 'station_name', 'distance_from_origin', 'arrival_day', 'arrival_time', 'departure_day', 'departure_time', 'train_no']
+Total rows: 172112
+Sample rows:
+   station_no station_name  ...  departure_time  train_no
+0           1           MJ  ...           09:45       961
+1           2          FLD  ...           11:15       961
+2           3          KBK  ...             NaN       961
+3           1          KBK  ...           14:30       962
+4           2          FLD  ...           16:15       962
+5           3           MJ  ...             NaN       962
+6           1          LTT  ...           00:55      1021
+7           2          TNA  ...           01:18      1021
+8           3          KYN  ...           01:35      1021
+9           4           NK  ...           04:15      1021
+
+[10 rows x 8 columns]
+
+File: station_full_names.csv
+Columns: ['station_name', 'station_full_name', 'station_zone', 'station_address']
+Total rows: 8963
+Sample rows:
+  station_name  ...                           station_address
+0           AA  ...  Sitapur Rd, Heerpur, Uttar Pradesh 261..
+1         AABH  ...  Chapra-Patna Highway, Rampur Ami, Biha..
+2         AADR  ...              Una, Himachal Pradesh, India
+3          AAG  ...               Solapur, Maharashtra, India
+4         AAGH  ...  Antagarh, PIN - 494665, Dist. - Kanker..
+5          AAH  ...                Itahar, West Bengal, India
+6          AAL  ...            Shahdol, Madhya Pradesh, India
+7          AAM  ...  Railway Station Road, Angadipuram, Ker..
+8          AAP  ...                  Amiyapur, Gujarat, India
+9          AAR  ...                    Adesar, Gujarat, India
+
+[10 rows x 4 columns]
+
+File: train_details.csv
+Columns: ['train_no', 'train_name', 'type_code']
+Total rows: 8992
+Sample rows:
+   train_no              train_name    type_code
+0      1211               BD NK SPL  PASS-TRAINS
+1      1212               NK BD SPL  PASS-TRAINS
+2      1461          SUR DD DMU SPL  PASS-TRAINS
+3      1462          DD SUR DMU SPL  PASS-TRAINS
+4      3020         AZ KNJ PASS SPL  PASS-TRAINS
+5      4189  GOY ALJN FAST MEMU SPL  PASS-TRAINS
+6      4190      ALJN GOY FAST MEMU  PASS-TRAINS
+7      4503             KLK SML SPL  PASS-TRAINS
+8      4504             SML KLK SPL  PASS-TRAINS
+9      4703       HMH SGNR PASS SPL  PASS-TRAINS
