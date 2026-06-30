@@ -14,94 +14,189 @@
       padding: 0;
     }
 
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --rail-blue: #0b4ea2;
+      --rail-blue-light: #1565c0;
+      --text-main: #10213a;
+      --text-soft: #5f728c;
+      --border-soft: #dbe6f2;
+      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.07);
+      --shadow-card: 0 8px 20px rgba(15, 23, 42, 0.06);
+      --radius-lg: 14px;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f0f4f8;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
       min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 1.5rem 1rem;
+      padding: 20px 16px 24px;
     }
 
     .container {
       width: 100%;
-      max-width: 620px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 16px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+      margin-bottom: 14px;
+      align-items: stretch;
+    }
+
+    .hero-panel {
+      border-radius: 16px;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .hero-panel-left {
+      background: linear-gradient(135deg, var(--rail-blue) 0%, var(--rail-blue-light) 100%);
+      color: white;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hero-panel-right {
+      background: #d7e5f6;
+      min-height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-train-image {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: inherit;
+      transition: transform 0.45s ease;
+    }
+
+    .hero-panel-right:hover .hero-train-image {
+      transform: scale(1.04);
     }
 
     /* HEADER */
     .header {
-      text-align: center;
-      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 0;
+      text-align: left;
     }
 
-    .header .icon {
+    .header .icon,
+    .hero-icon {
       width: 56px;
       height: 56px;
-      background: #2563eb;
-      border-radius: 14px;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.75rem;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      border-radius: 0;
+      backdrop-filter: none;
     }
 
-    .header .icon svg {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: white;
-      stroke-width: 2;
+    .header .icon img,
+    .hero-icon img,
+    .hero-icon-img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
     }
 
     .header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1e293b;
+      font-size: clamp(1.6rem, 2.3vw, 2.3rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: white;
+      letter-spacing: -0.03em;
     }
 
     .header p {
-      color: #64748b;
-      font-size: 0.9rem;
-      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.88rem;
+      line-height: 1.45;
+      max-width: 460px;
+      margin-top: 0;
     }
 
     /* TABS */
     .tabs {
       display: flex;
-      background: white;
-      border-radius: 12px;
+      flex-wrap: nowrap;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
       padding: 4px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-      margin-bottom: 1rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      margin-bottom: 0.7rem;
       gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
     }
 
     .tab-btn {
-      flex: 1;
-      padding: 0.6rem;
+      flex: 1 1 0;
+      padding: 0.65rem 0.55rem;
       border: none;
-      border-radius: 9px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: all 0.2s;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: all 0.25s ease;
       background: transparent;
-      color: #64748b;
+      color: rgba(255, 255, 255, 0.78);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
+      min-height: 40px;
+      white-space: nowrap;
+      min-width: 0;
     }
 
-    .tab-btn.active {
-      background: #2563eb;
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
       color: white;
     }
 
+    .tab-btn.active {
+      background: white;
+      color: var(--rail-blue);
+      box-shadow: 0 6px 16px rgba(7, 20, 48, 0.14);
+    }
+
     .tab-btn svg {
-      width: 15px;
-      height: 15px;
+      width: 13px;
+      height: 13px;
       fill: none;
       stroke: currentColor;
       stroke-width: 2;
@@ -117,52 +212,56 @@
 
     /* CARD */
     .card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 14px;
+      padding: 1rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(219, 230, 242, 0.9);
     }
 
     /* FORM */
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 0.7rem;
       position: relative;
     }
 
     label {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       font-weight: 600;
       color: #374151;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     input[type="text"],
     input[type="date"] {
       width: 100%;
-      padding: 0.7rem 1rem;
-      border: 1.5px solid #e2e8f0;
+      padding: 0.58rem 0.82rem;
+      border: 1.5px solid #d7e3f0;
       border-radius: 10px;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: #1e293b;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      background: #fdfefe;
     }
 
     #pnr {
       letter-spacing: 3px;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     input:focus {
       border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+      background: white;
     }
 
     input::placeholder {
       letter-spacing: 0;
       color: #cbd5e1;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
     }
 
     /* AUTOCOMPLETE */
@@ -174,7 +273,7 @@
       background: white;
       border: 1.5px solid #e2e8f0;
       border-top: none;
-      border-radius: 0 0 10px 10px;
+      border-radius: 0 0 9px 9px;
       max-height: 200px;
       overflow-y: auto;
       z-index: 100;
@@ -182,9 +281,9 @@
     }
 
     .autocomplete-item {
-      padding: 0.6rem 1rem;
+      padding: 0.5rem 0.8rem;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -202,7 +301,7 @@
     .station-badge {
       background: #eff6ff;
       color: #2563eb;
-      font-size: 0.7rem;
+      font-size: 0.66rem;
       font-weight: 700;
       padding: 2px 6px;
       border-radius: 4px;
@@ -214,29 +313,31 @@
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     /* BTN */
     .btn {
       width: 100%;
-      padding: 0.8rem;
-      background: #2563eb;
+      padding: 0.68rem;
+      background: linear-gradient(135deg, #0b4ea2 0%, #1565c0 100%);
       color: white;
       border: none;
       border-radius: 10px;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
+      transition: transform 0.18s ease, box-shadow 0.22s ease, filter 0.22s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
+      box-shadow: 0 10px 20px rgba(11, 78, 162, 0.2);
     }
 
     .btn:hover {
-      background: #1d4ed8;
+      filter: brightness(1.04);
+      box-shadow: 0 12px 22px rgba(11, 78, 162, 0.24);
     }
 
     .btn:active {
@@ -582,12 +683,163 @@
       margin-top: 3px;
     }
 
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 10px;
+      align-items: stretch;
+    }
+
+    .dashboard-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 16px;
+      border: 1px solid #e5edf6;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard-card h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .dashboard-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .dashboard-item {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      background: #f8fbff;
+      border: 1px solid #e4edf7;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      min-height: 88px;
+      height: 88px;
+    }
+
+    .dashboard-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(21, 101, 192, 0.1);
+      border-color: #bdd3ef;
+    }
+
+    .dashboard-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #eaf3ff 0%, #dbeaff 100%);
+      color: var(--rail-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .dashboard-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .dashboard-item-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .dashboard-item-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .dashboard-item-route {
+      font-size: 0.8rem;
+      color: #37506d;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+
+    .dashboard-meta {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-top: 8px;
+    }
+
+    .dashboard-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .dashboard-meta svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+
+    .dashboard-meta .meta-right {
+      margin-left: auto;
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .status-confirmed {
+      color: #15803d;
+      font-weight: 700;
+    }
+
+    .status-waitlist {
+      color: #a16207;
+      font-weight: 700;
+    }
+
+    .status-demand {
+      color: #b45309;
+      font-weight: 700;
+    }
+
+    .status-moderate {
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+
+    .status-seasonal {
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
     .disclaimer {
       text-align: center;
       font-size: 0.7rem;
-      color: #94a3b8;
-      margin-top: 1.25rem;
-      line-height: 1.6;
+      color: #6f829d;
+      margin-top: 0.65rem;
+      line-height: 1.5;
     }
 
     .results-count {
@@ -617,160 +869,369 @@
       stroke: currentColor;
       stroke-width: 2.5;
     }
+
+    @media (max-width: 1080px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-train-image {
+        min-height: 300px;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 16px 10px 20px;
+      }
+
+      .hero {
+        padding: 12px;
+        border-radius: 16px;
+      }
+
+      .hero-panel-left,
+      .dashboard-card {
+        padding: 14px;
+      }
+
+      .tab-btn {
+        font-size: 0.78rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-train-image {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .tab-btn {
+        flex: 0 0 auto;
+        min-width: 136px;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .dashboard-item {
+        min-height: 92px;
+        height: auto;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <div class="header">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="6" width="20" height="12" rx="3" />
-          <path d="M6 18v2M18 18v2M2 11h20M8 6V4M16 6V4" />
-        </svg>
-      </div>
-      <h1>Indian Railway Tracker</h1>
-      <p>PNR status & train search in one place</p>
-    </div>
-
-    <!-- TABS -->
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('pnr')">
-        <svg viewBox="0 0 24 24">
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <path d="M3 10h18M8 3v4M16 3v4" />
-        </svg>
-        PNR Status
-      </button>
-      <button class="tab-btn" onclick="switchTab('trains')">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="6" width="20" height="12" rx="3" />
-          <path d="M6 18v2M18 18v2M2 11h20" />
-        </svg>
-        Train Search
-      </button>
-      <button class="tab-btn" onclick="switchTab('live')">
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 8v4l3 3" />
-        </svg>
-        Live Status
-      </button>
-      <button class="tab-btn" id="delay-tab-btn" onclick="switchTab('delay')">
-        <svg viewBox="0 0 24 24">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        </svg>
-        Delay Predict
-      </button>
-    </div>
-
-    <!-- PNR TAB -->
-    <div id="tab-pnr" class="tab-content active">
-      <div class="card">
-        <div class="form-group">
-          <label for="pnr">PNR Number</label>
-          <input type="text" id="pnr" maxlength="10" placeholder="Enter 10-digit PNR"
-            oninput="this.value=this.value.replace(/\D/g,'')" onkeydown="if(event.key==='Enter')checkPNR()" />
-        </div>
-        <button class="btn" id="checkBtn" onclick="checkPNR()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-          Check PNR Status
-        </button>
-        <div id="pnr-result"></div>
-      </div>
-    </div>
-
-    <!-- TRAIN SEARCH TAB -->
-    <div id="tab-trains" class="tab-content">
-      <div class="card">
-        <div class="form-row">
-          <div class="form-group">
-            <label>From Station</label>
-            <input type="text" id="fromInput" placeholder="e.g. New Delhi" oninput="searchStation('from')"
-              autocomplete="off" />
-            <div class="autocomplete-list" id="fromList" style="display:none;"></div>
-            <input type="hidden" id="fromCode" />
+    <section class="hero">
+      <div class="hero-panel hero-panel-left">
+        <div class="header">
+          <div class="icon hero-icon">
+            <img src="{{ url_for('static', filename='images/train-icon.png') }}" class="hero-icon-img" alt="" />
           </div>
-          <div class="form-group">
-            <label>To Station</label>
-            <input type="text" id="toInput" placeholder="e.g. Mumbai" oninput="searchStation('to')"
-              autocomplete="off" />
-            <div class="autocomplete-list" id="toList" style="display:none;"></div>
-            <input type="hidden" id="toCode" />
+          <div>
+            <h1>Indian Railway Tracker</h1>
+            <p>Track PNR, search trains, view live status and predict delays.</p>
           </div>
         </div>
-        <button class="btn" id="searchBtn" onclick="searchTrains()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-          Search Trains
-        </button>
-        <div id="train-result"></div>
-      </div>
-    </div>
 
-    <!-- LIVE STATUS TAB -->
-    <div id="tab-live" class="tab-content">
-      <div class="card">
-        <div class="form-group">
-          <label>Train Number or Name</label>
-          <input type="text" id="liveTrainInput" placeholder="e.g. 12566 or Bihar Sampark"
-            oninput="searchLiveTrain(this.value)" onkeydown="if(event.key==='Enter')checkLiveStatus()" />
-          <div class="autocomplete-list" id="liveTrainList" style="display:none;"></div>
+        <!-- TABS -->
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab('pnr')">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 10h18M8 3v4M16 3v4" />
+            </svg>
+            PNR Status
+          </button>
+          <button class="tab-btn" onclick="switchTab('trains')">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="6" width="20" height="12" rx="3" />
+              <path d="M6 18v2M18 18v2M2 11h20" />
+            </svg>
+            Train Search
+          </button>
+          <button class="tab-btn" onclick="switchTab('live')">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4l3 3" />
+            </svg>
+            Live Status
+          </button>
+          <button class="tab-btn" id="delay-tab-btn" onclick="switchTab('delay')">
+            <svg viewBox="0 0 24 24">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+            Delay Predict
+          </button>
         </div>
-        <button class="btn" id="liveBtn" onclick="checkLiveStatus()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 8v4l3 3" />
-          </svg>
-          Get Live Status
-        </button>
-        <div id="live-result"></div>
-      </div>
-    </div>
 
-    <!-- DELAY PREDICTOR TAB -->
-    <div id="tab-delay" class="tab-content">
-      <div class="card">
-        <div id="delay-model-notice"
-          style="display:none;background:#fef9c3;border:1px solid #fde68a;border-radius:10px;padding:0.8rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:#78350f;">
-          <strong>Model not ready yet.</strong> Training is still running. Please wait and refresh in a few minutes.
-        </div>
-        <div class="form-group">
-          <label for="delayTrainInput">Train Number</label>
-          <input type="text" id="delayTrainInput" placeholder="e.g. 12301 or Howrah Rajdhani"
-            oninput="searchDelayTrain(this.value)" onkeydown="if(event.key==='Enter')predictDelay()"
-            autocomplete="off" />
-          <div class="autocomplete-list" id="delayTrainList" style="display:none;"></div>
-          <input type="hidden" id="delayTrainNo" />
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="delayStationInput">Station Code</label>
-            <input type="text" id="delayStationInput" placeholder="e.g. NDLS, HWH" autocomplete="off"
-              oninput="searchDelayStation(this.value)" />
-            <div class="autocomplete-list" id="delayStationList" style="display:none;"></div>
-            <input type="hidden" id="delayStationCode" />
-          </div>
-          <div class="form-group">
-            <label for="delayDate">Journey Date</label>
-            <input type="date" id="delayDate" />
+        <!-- PNR TAB -->
+        <div id="tab-pnr" class="tab-content active">
+          <div class="card">
+            <div class="form-group">
+              <label for="pnr">PNR Number</label>
+              <input type="text" id="pnr" maxlength="10" placeholder="Enter 10-digit PNR"
+                oninput="this.value=this.value.replace(/\D/g,'')" onkeydown="if(event.key==='Enter')checkPNR()" />
+            </div>
+            <button class="btn" id="checkBtn" onclick="checkPNR()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+              Check PNR Status
+            </button>
+            <div id="pnr-result"></div>
           </div>
         </div>
-        <button class="btn" id="delayBtn" onclick="predictDelay()"
-          style="background:linear-gradient(135deg,#7c3aed,#2563eb);">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-          </svg>
-          Predict Delay
-        </button>
-        <div id="delay-result"></div>
+
+        <!-- TRAIN SEARCH TAB -->
+        <div id="tab-trains" class="tab-content">
+          <div class="card">
+            <div class="form-row">
+              <div class="form-group">
+                <label>From Station</label>
+                <input type="text" id="fromInput" placeholder="e.g. New Delhi" oninput="searchStation('from')"
+                  autocomplete="off" />
+                <div class="autocomplete-list" id="fromList" style="display:none;"></div>
+                <input type="hidden" id="fromCode" />
+              </div>
+              <div class="form-group">
+                <label>To Station</label>
+                <input type="text" id="toInput" placeholder="e.g. Mumbai" oninput="searchStation('to')"
+                  autocomplete="off" />
+                <div class="autocomplete-list" id="toList" style="display:none;"></div>
+                <input type="hidden" id="toCode" />
+              </div>
+            </div>
+            <button class="btn" id="searchBtn" onclick="searchTrains()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+              Search Trains
+            </button>
+            <div id="train-result"></div>
+          </div>
+        </div>
+
+        <!-- LIVE STATUS TAB -->
+        <div id="tab-live" class="tab-content">
+          <div class="card">
+            <div class="form-group">
+              <label>Train Number or Name</label>
+              <input type="text" id="liveTrainInput" placeholder="e.g. 12566 or Bihar Sampark"
+                oninput="searchLiveTrain(this.value)" onkeydown="if(event.key==='Enter')checkLiveStatus()" />
+              <div class="autocomplete-list" id="liveTrainList" style="display:none;"></div>
+            </div>
+            <button class="btn" id="liveBtn" onclick="checkLiveStatus()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v4l3 3" />
+              </svg>
+              Get Live Status
+            </button>
+            <div id="live-result"></div>
+          </div>
+        </div>
+
+        <!-- DELAY PREDICTOR TAB -->
+        <div id="tab-delay" class="tab-content">
+          <div class="card">
+            <div id="delay-model-notice"
+              style="display:none;background:#fef9c3;border:1px solid #fde68a;border-radius:10px;padding:0.8rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:#78350f;">
+              <strong>Model not ready yet.</strong> Training is still running. Please wait and refresh in a few minutes.
+            </div>
+            <div class="form-group">
+              <label for="delayTrainInput">Train Number</label>
+              <input type="text" id="delayTrainInput" placeholder="e.g. 12301 or Howrah Rajdhani"
+                oninput="searchDelayTrain(this.value)" onkeydown="if(event.key==='Enter')predictDelay()"
+                autocomplete="off" />
+              <div class="autocomplete-list" id="delayTrainList" style="display:none;"></div>
+              <input type="hidden" id="delayTrainNo" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="delayStationInput">Station Code</label>
+                <input type="text" id="delayStationInput" placeholder="e.g. NDLS, HWH" autocomplete="off"
+                  oninput="searchDelayStation(this.value)" />
+                <div class="autocomplete-list" id="delayStationList" style="display:none;"></div>
+                <input type="hidden" id="delayStationCode" />
+              </div>
+              <div class="form-group">
+                <label for="delayDate">Journey Date</label>
+                <input type="date" id="delayDate" />
+              </div>
+            </div>
+            <button class="btn" id="delayBtn" onclick="predictDelay()"
+              style="background:linear-gradient(135deg,#7c3aed,#2563eb);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+              Predict Delay
+            </button>
+            <div id="delay-result"></div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="hero-panel hero-panel-right">
+        <img class="hero-train-image"
+          src="{{ url_for('static', filename='images/train.png') }}"
+          alt="Vande Bharat train" />
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="dashboard-card">
+        <h2>Recent Searches</h2>
+        <div class="dashboard-list">
+          <div class="dashboard-item">
+            <div class="dashboard-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M14 3v5h5" />
+              </svg>
+            </div>
+            <div class="dashboard-item-content">
+              <div class="dashboard-item-title">PNR 1234567890</div>
+              <div class="dashboard-item-route">Mumbai → Delhi</div>
+              <div class="dashboard-meta">
+                <span class="status-confirmed">
+                  <svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7" /></svg>
+                  Confirmed
+                </span>
+                <span class="meta-right">
+                  <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18" /><rect x="3" y="4" width="18" height="18" rx="2" /></svg>
+                  15-12-2022
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-item">
+            <div class="dashboard-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M14 3v5h5" />
+              </svg>
+            </div>
+            <div class="dashboard-item-content">
+              <div class="dashboard-item-title">PNR 9876543210</div>
+              <div class="dashboard-item-route">Bangalore → Chennai</div>
+              <div class="dashboard-meta">
+                <span class="status-waitlist">
+                  <svg viewBox="0 0 24 24"><path d="M12 8v5l3 3" /><circle cx="12" cy="12" r="9" /></svg>
+                  Waitlist 5
+                </span>
+                <span class="meta-right">
+                  <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18" /><rect x="3" y="4" width="18" height="18" rx="2" /></svg>
+                  15-12-2022
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-item">
+            <div class="dashboard-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="6" width="20" height="12" rx="3" />
+                <path d="M6 18v2M18 18v2M2 11h20" />
+              </svg>
+            </div>
+            <div class="dashboard-item-content">
+              <div class="dashboard-item-title">Train 12001</div>
+              <div class="dashboard-item-route">NDLS Shatabdi</div>
+              <div class="dashboard-meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><path d="M3 12h18" /><path d="m13 5 7 7-7 7" /></svg>
+                  Premium Corridor
+                </span>
+                <span class="meta-right">
+                  <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18" /><rect x="3" y="4" width="18" height="18" rx="2" /></svg>
+                  18-12-2022
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <h2>Trending Routes</h2>
+        <div class="dashboard-list">
+          <div class="dashboard-item">
+            <div class="dashboard-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 12h11" />
+                <path d="m10 5 7 7-7 7" />
+              </svg>
+            </div>
+            <div class="dashboard-item-content">
+              <div class="dashboard-item-title">Mumbai → Delhi</div>
+              <div class="dashboard-meta">
+                <span class="status-demand">
+                  <svg viewBox="0 0 24 24"><path d="m4 14 5-5 4 4 7-7" /></svg>
+                  High Demand
+                </span>
+                <span class="meta-right">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+                  Busy Corridor
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-item">
+            <div class="dashboard-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 12h11" />
+                <path d="m10 5 7 7-7 7" />
+              </svg>
+            </div>
+            <div class="dashboard-item-content">
+              <div class="dashboard-item-title">Chennai → Bangalore</div>
+              <div class="dashboard-meta">
+                <span class="status-moderate">
+                  <svg viewBox="0 0 24 24"><path d="m4 16 5-5 4 3 7-8" /></svg>
+                  Moderate
+                </span>
+                <span class="meta-right">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+                  Daily Commuters
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-item">
+            <div class="dashboard-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 12h11" />
+                <path d="m10 5 7 7-7 7" />
+              </svg>
+            </div>
+            <div class="dashboard-item-content">
+              <div class="dashboard-item-title">Kolkata → Puri</div>
+              <div class="dashboard-meta">
+                <span class="status-seasonal">
+                  <svg viewBox="0 0 24 24"><path d="m4 15 5-6 4 4 7-5" /></svg>
+                  Seasonal
+                </span>
+                <span class="meta-right">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+                  Leisure Traffic
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <p class="disclaimer">
       Unofficial API for educational purposes. Not affiliated with Indian Railways or IRCTC.<br>
