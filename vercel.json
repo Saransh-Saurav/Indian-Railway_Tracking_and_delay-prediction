@@ -1,6 +1,10 @@
 {
   "builds": [
-    { "src": "app.py", "use": "@vercel/python" }
+    {
+      "src": "app.py",
+      "use": "@vercel/python",
+      "config": { "includeFiles": ["model/**"] }
+    }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "app.py" }
